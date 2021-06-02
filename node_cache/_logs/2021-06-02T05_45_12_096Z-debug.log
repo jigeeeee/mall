@@ -1,0 +1,15 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/node/bin/node', '/usr/bin/npm', 'run', 'serve' ]
+2 info using npm@6.14.13
+3 info using node@v14.17.0
+4 verbose run-script [ 'preserve', 'serve', 'postserve' ]
+5 info lifecycle supermall@0.1.0~preserve: supermall@0.1.0
+6 info lifecycle supermall@0.1.0~serve: supermall@0.1.0
+7 verbose lifecycle supermall@0.1.0~serve: unsafe-perm in lifecycle true
+8 verbose lifecycle supermall@0.1.0~serve: PATH: /usr/local/node/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/home/kinoki/projects/mall/node_modules/.bin:/home/kinoki/.local/bin:/home/kinoki/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/var/lib/snapd/snap/bin:/usr/lib/jvm/default/bin
+9 verbose lifecycle supermall@0.1.0~serve: CWD: /home/kinoki/projects/mall
+10 silly lifecycle supermall@0.1.0~serve: Args: [ '-c', 'vue-cli-service serve' ]
+11 timing npm Completed in 10985624ms
+12 error cb() never called!
+13 error This is an error with npm itself. Please report this error at:
+14 error <https://npm.community>

@@ -1,6 +1,6 @@
 <template>
   <div class="goods-item">
-    <img :src="goodsitem.show.img" alt="" @load="imgLoad">
+    <img :src="goodsitem.show.img" alt="" @load="imgLoad" @click="imgClick">
     <div class="goods-info">
       <p class="title">{{goodsitem.title}}</p>
       <span class="price">{{goodsitem.price}}</span>
@@ -23,6 +23,9 @@
       methods: {
         imgLoad() {
           this.$bus.$emit('imgItemLoad')
+        },
+        imgClick() {
+          this.$router.push('/detial/' + this.goodsitem.iid)
         }
       }
     }

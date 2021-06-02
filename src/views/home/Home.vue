@@ -1,12 +1,17 @@
 <template>
     <div id="home" class="wrapper">
       <nav-bar class="home-nav"><div slot="center">购物街</div></nav-bar>
+      <teb-control class="teb-control" :titles="['流行','新款','精选']"
+      @tebClick="tebClick" ref="tebControl1" v-show="isTabFixed"></teb-control>
 
-      <scroll class="content" ref="scroll" :probe-type="3" @scrollClick="contentScroll" :pull-up-load="true" @loadMore="loadMore">
-        <home-swiper :banners="banners"></home-swiper>
+      <scroll class="content" ref="scroll" :probe-type="3"
+      @scrollClick="contentScroll"
+      :pull-up-load="true" @loadMore="loadMore">
+        <home-swiper :banners="banners" @swiperImgLoad = "swiperImgLoad"></home-swiper>
         <recommend-view :recommends="recommends"></recommend-view>
         <feature-view></feature-view>
-        <teb-control class="teb-control" :titles="['流行','新款','精选']"  @tebClick="tebClick"></teb-control>
+        <teb-control :titles="['流行','新款','精选']" @tebClick="tebClick"
+        ref="tebControl2"></teb-control>
         <goods-list :goods="showTeb"></goods-list>
       </scroll>
 
@@ -48,7 +53,9 @@
           'sell': {page: 0, list: []},
         },
         currentType: 'pop',
-        isShowBackTop: false
+        isShowBackTop: false,
+        offsetTop: 0,
+        isTabFixed: false,
       }
     },
     created() {
@@ -79,9 +86,14 @@
       },
       contentScroll (position) {
         this.isShowBackTop = (-position.y) > 1000
+
+        this.isTabFixed = (-position.y) > this.offsetTop
       },
       loadMore () {
         this.getHomeGoods(this.currentType)
+      },
+      swiperImgLoad() {
+        this.offsetTop = this.$refs.tebControl2.$el.offsetTop
       },
       /**
        * 关于事件监听的方法
@@ -110,6 +122,8 @@
             this.currentType = 'sell'
                 break
         }
+        this.$refs.tebControl1.currentIndex = index
+        this.$refs.tebControl2.currentIndex = index
       },
 
       /**
@@ -140,7 +154,6 @@
 
 <style scoped>
   #home {
-    padding-top: 44px;
     height: 100vh;
     position: relative;
   }
@@ -149,16 +162,15 @@
     background-color: var(--color-tint);
     color: #f6f6f6;
 
-    position: fixed;
+    /* position: fixed;
     left: 0;
     right: 0;
     top: 0;
-    z-index: 1;
+    z-index: 1; */
   }
 
   .teb-control {
-    position: sticky;
-    top: 44px;
+    position: relative;
     z-index: 1;
   }
 

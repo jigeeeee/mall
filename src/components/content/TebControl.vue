@@ -1,6 +1,8 @@
 <template>
     <div class="teb-control">
-      <div class="teb-control-item" v-for="(item, index) in titles" :key="index" :class="{active: index === currentIndex}" @click="itemClick(index)">
+      <div class="teb-control-item" v-for="(item, index) in titles"
+      :key="index" :class="{active: index === currentIndex}"
+      @click="itemClick(index)">
         <span>{{item}}</span>
       </div>
     </div>
