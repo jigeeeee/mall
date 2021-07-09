@@ -6,7 +6,7 @@
 
       <scroll class="content" ref="scroll" :probe-type="3"
       @scrollClick="contentScroll"
-      :pull-up-load="true" @loadMore="loadMore">
+      :pull-up-load="true" @pullingUp="pullingUp">
         <home-swiper :banners="banners" @swiperImgLoad = "swiperImgLoad"></home-swiper>
         <recommend-view :recommends="recommends"></recommend-view>
         <feature-view></feature-view>
@@ -89,7 +89,7 @@
 
         this.isTabFixed = (-position.y) > this.offsetTop
       },
-      loadMore () {
+      pullingUp () {
         this.getHomeGoods(this.currentType)
       },
       swiperImgLoad() {

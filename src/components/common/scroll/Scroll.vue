@@ -31,17 +31,22 @@
       this.$nextTick(() => {
         if (!this.scroll) {
           this.scroll = new BScroll(this.$refs.wrapper, {
-            scrollY: true,
             click: true,
             probeType: this.probeType,
             pullUpLoad: this.pullUpLoad
           })
-          this.scroll.on('scroll', (position) => {
+
+          if(this.probeType === 2 || this.probeType === 3) {
+            this.scroll.on('scroll', (position) => {
             this.$emit('scrollClick', position)
-          })
-          this.scroll.on('pullingUp', () => {
-            this.$emit('loadMore')
-          })
+            })
+          }
+
+          if(this.pullUpLoad) {
+            this.scroll.on('pullingUp', () => {
+            this.$emit('pullingUp')
+            })
+          }
         }
       })
     },

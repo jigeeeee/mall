@@ -25,7 +25,7 @@
           this.$bus.$emit('imgItemLoad')
         },
         imgClick() {
-          this.$router.push('/detial/' + this.goodsitem.iid)
+          this.$router.push('/detail/' + this.goodsitem.iid)
         }
       }
     }
@@ -76,6 +76,6 @@
     left: -16px;
     width: 14px;
     height: 14px;
-    background: url("../../../assets/img/common/collect.svg");
+    background: url("../../../assets/img/common/collect.svg") 0 0/14px 14px;
   }
 </style>
